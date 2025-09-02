@@ -42,6 +42,13 @@ produtos = [
 produtos.append(Produto(4, "Marca-texto", "Papelaria", 80, 3.75, "Pilot"))
 produtos.append(Produto(5, "Grampeador", "Escritório", 30, 22.40, "Tramontina"))
 
+# 🔎 Função para listar produtos com preço acima de R$10
+def listar_produtos_acima_de_10():
+    print("\n💰 Produtos com preço acima de R$10:")
+    for produto in produtos:
+        if produto.preco > 10:
+            print(produto)
+
 
 # 🧬 Serializa os produtos para JSON e exibe no terminal
 json_produtos = json.dumps([p.to_dict() for p in produtos], indent=4)
@@ -71,10 +78,7 @@ CREATE TABLE IF NOT EXISTS produtos (
 # 📥 Insere os produtos na tabela (substitui se o ID já existir)
 for p in produtos:
     cursor.execute("""
-        INSERT OR REPLACE INTO produtos 
-        (id, nome, categoria, quantidade, preco, fornecedor)
-        VALUES (?, ?, ?, ?, ?, ?)
-    """, (p.id, p.nome, p.categoria, p.quantidade, p.preco, p.fornecedor))
+        INSERT OR REPLACE INTO produtos .nome, p.categoria, p.quantidade, p.preco, p.fornecedor))
 
 # 💾 Salva as alterações no banco
 conn.commit()
@@ -91,3 +95,5 @@ for row in cursor.fetchall():
 # 🔒 Encerra a conexão com o banco
 conn.close()
 
+# 🧪 Testa a função de listagem de produtos acima de R$10
+listar_produtos_acima_de_10()
