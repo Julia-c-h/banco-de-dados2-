@@ -38,6 +38,11 @@ produtos = [
     Produto(3, "Borracha", "Papelaria", 200, 1.20, "Mercur")
 ]
 
+# ➕ Adiciona novos produtos à lista usando .append()
+produtos.append(Produto(4, "Marca-texto", "Papelaria", 80, 3.75, "Pilot"))
+produtos.append(Produto(5, "Grampeador", "Escritório", 30, 22.40, "Tramontina"))
+
+
 # 🧬 Serializa os produtos para JSON e exibe no terminal
 json_produtos = json.dumps([p.to_dict() for p in produtos], indent=4)
 print("📦 Produtos em JSON:")
@@ -85,3 +90,4 @@ for row in cursor.fetchall():
 
 # 🔒 Encerra a conexão com o banco
 conn.close()
+
